@@ -1,0 +1,8 @@
+.\mongodb
+.\mongodb\data
+.\mongodb\initdb.d
+.\mongodb\log
+mongodb/data/*
+mongodb/log/*
+.DS_Store
+
