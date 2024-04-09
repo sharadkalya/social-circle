@@ -46,6 +46,20 @@ services:
     networks:
       - main-network
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: social-cirlce-react
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    networks:
+      - main-network
+
+
 networks:
   main-network:
     external:
