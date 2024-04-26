@@ -6,6 +6,17 @@ export default function Home(){
   useEffect(() => {
     fetch('http://localhost:25000/demo/index?message=someMessage');
   }, []);
+  useEffect(() => {
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow"
+    };
+    
+    fetch("http://localhost:25000/demo/index?message=someMessage", requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.error(error));
+  }, []);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">

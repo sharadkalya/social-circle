@@ -27,7 +27,7 @@ services:
       dockerfile: Dockerfile
     image: $APP_NAME
     container_name: $APP_NAME
-    restart: on-failure
+    restart: always
     depends_on:
       - mongo
     ports:
