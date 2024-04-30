@@ -3,6 +3,8 @@ package com.circle.socialcircle.controllers;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.circle.socialcircle.model.User;
+import com.circle.socialcircle.payload.response.ErrorResponse;
+import com.circle.socialcircle.payload.response.MessageResponse;
 import com.circle.socialcircle.payload.response.SignupRequest;
 import com.circle.socialcircle.repository.UserRepository;
 
@@ -27,6 +29,11 @@ public class UserController {
 
   @PostMapping("user")
   public ResponseEntity<?> postMethodName(@RequestBody SignupRequest signupRequest) {
+    if (userRepository.existsByEmail(signupRequest.getEmail())) {
+      return ResponseEntity
+          .badRequest()
+          .body(new ErrorResponse(("Error: Email is already in use!")));
+    }
     userRepository.save(new User(signupRequest));
     return ResponseEntity.ok(signupRequest);
   }
