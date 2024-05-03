@@ -1,26 +1,25 @@
-package com.circle.socialcircle.payload.response;
+package com.circle.socialcircle.payload.request.user;
+
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 public class SignupRequest {
-  
+
   @NotBlank(message = "firstName is required")
   private String firstName;
-  
+
   @NotBlank(message = "lastName is required")
   private String lastName;
 
   @Email(message = "Email validation failed - Invalid email format", regexp = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
   @NotBlank(message = "Email field can not be blank")
   private String email;
-  
+
   @NotBlank(message = "Length of password should be between 3 to 20")
-  @Min(message = "Length of password should be between 3 to 20", value = 3)
-  @Max(message = "Length of password should be between 3 to 20", value = 20)
+  @Size(min = 4, max = 20, message = "Length of password should be between 3 to 20")
   private String password;
-  
+
   public SignupRequest() {
   }
 
@@ -61,5 +60,5 @@ public class SignupRequest {
 
   public void setPassword(String password) {
     this.password = password;
-  }  
+  }
 }

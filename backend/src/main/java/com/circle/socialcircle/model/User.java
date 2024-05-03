@@ -2,7 +2,7 @@ package com.circle.socialcircle.model;
 
 import org.springframework.data.annotation.Id;
 
-import com.circle.socialcircle.payload.response.SignupRequest;
+import com.circle.socialcircle.payload.request.user.SignupRequest;
 
 public class User {
   @Id

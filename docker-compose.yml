@@ -28,8 +28,8 @@ services:
     image: $APP_NAME
     container_name: $APP_NAME
     restart: always
-    depends_on:
-      - mongo
+    volumes:
+      - ./backend/src:/app/src
     ports:
       - $SERVER_HOST_PORT:8000
     environment:
